@@ -91,7 +91,7 @@ FROM employee_data;
 
 
 /*=========================================================
-Question 3: Department Maximum Salary
+Question 3: Department Maximum Salary And Minimum Salary
 
 Display:
 - Employee ID
@@ -114,7 +114,12 @@ SELECT `Employee ID`,
        MAX(salary_numeric) OVER(PARTITION BY Department) AS department_max_salary
 FROM employee_data;
 
-
+SELECT `Employee ID`,
+       `Full Name`,
+       Department,
+       salary_numeric,
+       MIN(salary_numeric) OVER(PARTITION BY Department) AS department_max_salary
+FROM employee_data;
 
 /*=========================================================
 Question 4: Salary Rank Within Department
