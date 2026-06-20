@@ -148,8 +148,6 @@ SELECT `Employee ID`,
        ) AS salary_rank_department
 FROM employee_data;
 
-
-
 /*=========================================================
 Question 5: Dense Salary Rank Within Department
 
