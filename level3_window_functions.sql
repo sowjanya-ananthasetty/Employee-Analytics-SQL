@@ -1,3 +1,32 @@
+-- =====================================================
+-- Employee Analytics Project
+-- Level 1: Basic SQL Analysis
+-- Dataset: Employee Sample Data
+-- =====================================================
+
+
+-- =====================================================
+-- DATABASE SETUP
+-- =====================================================
+
+CREATE DATABASE employee_analytics;
+
+USE employee_analytics;
+
+
+-- =====================================================
+-- TABLE INSPECTION
+-- =====================================================
+
+-- View table structure
+DESCRIBE employee_data_csv;
+
+-- View available tables
+SHOW TABLES;
+
+-- View all records
+SELECT *
+FROM employee_data_csv;
 /*=========================================================
 QUESTION 1: Department Average Salary
 
