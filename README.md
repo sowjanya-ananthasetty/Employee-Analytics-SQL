@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-This project focuses on analyzing employee workforce data using SQL. The objective was to strengthen SQL skills through real-world business analysis, reporting, data cleaning, and analytics scenarios.
+This project focuses on analyzing employee workforce data using SQL. The objective was to strengthen SQL skills through real-world business analysis, reporting, data cleaning, data transformation, aggregations, and analytical problem-solving.
 
-The dataset contains employee information such as demographics, departments, salaries, business units, locations, and hiring details.
+The dataset contains employee information such as demographics, departments, salaries, business units, locations, hiring dates, and employee distribution across countries and cities.
 
 ---
 
@@ -12,7 +12,7 @@ The dataset contains employee information such as demographics, departments, sal
 
 ## Skill Level Before Project
 
-**SQL Skill Level:** Beginner
+### SQL Skill Level: Beginner
 
 At the start of this project, the focus was on learning:
 
@@ -20,14 +20,24 @@ At the start of this project, the focus was on learning:
 * Retrieving data from tables
 * Understanding SQL syntax
 * Simple filtering and sorting
+* Basic aggregate functions
 
 ---
 
 ## Current Skill Level
 
-**SQL Skill Level:** Intermediate
+### SQL Skill Level: Intermediate
 
-Through this Employee Analytics project, I developed practical experience in data cleaning, aggregation, business analysis, reporting, and introductory window functions.
+Through this Employee Analytics project, I developed practical experience in:
+
+* Data Cleaning
+* Data Transformation
+* Aggregations
+* Business Analysis
+* Reporting
+* Ranking Functions
+* Analytical Window Functions
+* Workforce Analytics
 
 ---
 
@@ -76,6 +86,33 @@ Through this Employee Analytics project, I developed practical experience in dat
 * CURDATE()
 * Date-based Filtering
 * Hiring Trend Analysis
+
+## Window Functions
+
+### Aggregate Window Functions
+
+* AVG() OVER()
+* SUM() OVER()
+* MAX() OVER()
+* MIN() OVER()
+* COUNT() OVER()
+
+### Window Clauses
+
+* OVER()
+* PARTITION BY
+* ORDER BY within OVER()
+
+### Ranking Functions
+
+* ROW_NUMBER()
+* RANK()
+* DENSE_RANK()
+
+### Navigation Functions
+
+* LAG()
+* LEAD()
 
 ## Business Analytics
 
@@ -170,32 +207,238 @@ END;
 
 ## Topics Covered
 
-✓ AVG() OVER()
+### Aggregate Window Functions
 
-✓ SUM() OVER()
+✔ AVG() OVER()
 
-✓ MAX() OVER()
+✔ SUM() OVER()
 
-✓ MIN() OVER()
+✔ MAX() OVER()
 
-✓ PARTITION BY
+✔ MIN() OVER()
 
-✓ RANK()
+✔ COUNT() OVER()
 
-✓ DENSE_RANK()
+### Window Clauses
 
+✔ OVER()
+
+✔ PARTITION BY
+
+✔ ORDER BY within OVER()
+
+### Ranking Functions
+
+✔ ROW_NUMBER()
+
+✔ RANK()
+
+✔ DENSE_RANK()
+
+### Navigation Functions
+
+✔ LAG()
+
+✔ LEAD()
+
+---
+
+# Window Function Analytics Performed
+
+## Department Analytics
+
+* Department Average Salary
+* Department Total Salary
+* Department Maximum Salary
+* Department Minimum Salary
+* Department Employee Count
+
+## Salary Ranking Analytics
+
+* Salary Rank Within Department
+* Dense Salary Rank Within Department
+* Row Number Assignment Within Department
+
+## Demographic Analytics
+
+* Gender-wise Average Salary
+* Country-wise Average Salary
+
+## Business Unit Analytics
+
+* Business Unit Total Salary Analysis
+
+## Salary Navigation Analytics
+
+* Previous Salary Analysis using LAG()
+* Next Salary Analysis using LEAD()
+* Previous Salary Within Department
+* Next Salary Within Department
+
+## Salary Difference Analytics
+
+* Salary Difference from Previous Employee
+* Salary Difference to Next Employee
+* Department-wise Salary Growth Analysis
+
+---
+
+# Sample Window Function Queries
+
+## Department Average Salary
+
+```sql
+SELECT `Employee ID`,
+       `Full Name`,
+       Department,
+       salary_numeric,
+       AVG(salary_numeric)
+       OVER(PARTITION BY Department) AS department_avg_salary
+FROM employee_data;
+```
+
+## Salary Rank Within Department
+
+```sql
+SELECT `Employee ID`,
+       `Full Name`,
+       Department,
+       salary_numeric,
+       RANK() OVER(
+           PARTITION BY Department
+           ORDER BY salary_numeric DESC
+       ) AS salary_rank_department
+FROM employee_data;
+```
+
+## Previous Salary Analysis
+
+```sql
+SELECT `Employee ID`,
+       `Full Name`,
+       salary_numeric,
+       LAG(salary_numeric)
+       OVER(ORDER BY salary_numeric) AS previous_salary
+FROM employee_data;
+```
+
+## Next Salary Analysis
+
+```sql
+SELECT `Employee ID`,
+       `Full Name`,
+       salary_numeric,
+       LEAD(salary_numeric)
+       OVER(ORDER BY salary_numeric) AS next_salary
+FROM employee_data;
+```
+
+---
+
+# Learning Progress
+
+## Concepts Mastered
+
+### SQL Fundamentals
+
+✔ SELECT
+
+✔ WHERE
+
+✔ DISTINCT
+
+✔ ORDER BY
+
+✔ LIMIT
+
+### Aggregations
+
+✔ COUNT()
+
+✔ SUM()
+
+✔ AVG()
+
+✔ MIN()
+
+✔ MAX()
+
+### Grouping
+
+✔ GROUP BY
+
+✔ HAVING
+
+### Data Cleaning
+
+✔ ALTER TABLE
+
+✔ UPDATE
+
+✔ CAST()
+
+✔ REPLACE()
+
+### Conditional Logic
+
+✔ CASE WHEN
+
+### Date Functions
+
+✔ YEAR()
+
+✔ CURDATE()
+
+### Window Functions
+
+✔ AVG() OVER()
+
+✔ SUM() OVER()
+
+✔ MAX() OVER()
+
+✔ MIN() OVER()
+
+✔ COUNT() OVER()
+
+✔ ROW_NUMBER()
+
+✔ RANK()
+
+✔ DENSE_RANK()
+
+✔ LAG()
+
+✔ LEAD()
+
+✔ PARTITION BY
+
+---
 
 # Next Learning Goals
 
 ## Advanced SQL
 
-* Subqueries
-* Common Table Expressions (CTEs)
-* Window Functions
+### Subqueries
 
-  * ROW_NUMBER()
-  * RANK()
-  * DENSE_RANK()
+* Scalar Subqueries
+* Correlated Subqueries
+* EXISTS
+* NOT EXISTS
+
+### Common Table Expressions (CTEs)
+
+* Basic CTEs
+* Multiple CTEs
+* Recursive CTEs
+
+### Advanced Window Functions
+
+* Running Totals
+* Moving Averages
+* FIRST_VALUE()
+* LAST_VALUE()
+* NTILE()
 
 ## Advanced Analytics
 
@@ -204,6 +447,7 @@ END;
 * Second Highest Paid Employee per Department
 * Salary Bands
 * Department Performance Metrics
+* Employee Retention Analytics
 
 ## Visualization
 
@@ -220,13 +464,14 @@ END;
 | Data Cleaning     | 8.5/10      |
 | Aggregations      | 9/10        |
 | Business Analysis | 8.5/10      |
-| Intermediate SQL  | 8/10        |
+| Window Functions  | 8/10        |
+| Intermediate SQL  | 8.5/10      |
 | Advanced SQL      | In Progress |
 
 ---
 
 # Overall Portfolio Strength
 
-**Current Rating: 8/10**
+### Current Rating: 8.5/10
 
-This project demonstrates practical SQL skills through real-world employee analytics, business reporting, data cleaning, aggregation, and introductory window-function analysis. It reflects progression from beginner SQL concepts to intermediate-level analytical problem solving.
+This project demonstrates practical SQL skills through real-world employee analytics, business reporting, data cleaning, aggregations, ranking functions, and analytical window-function usage. It reflects a progression from beginner SQL concepts to intermediate-level analytical problem solving and provides a strong foundation for advanced SQL topics such as CTEs, subqueries, and advanced analytics.
