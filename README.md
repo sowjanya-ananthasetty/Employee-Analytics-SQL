@@ -281,60 +281,6 @@ END;
 * Salary Difference to Next Employee
 * Department-wise Salary Growth Analysis
 
----
-
-# Sample Window Function Queries
-
-## Department Average Salary
-
-```sql
-SELECT `Employee ID`,
-       `Full Name`,
-       Department,
-       salary_numeric,
-       AVG(salary_numeric)
-       OVER(PARTITION BY Department) AS department_avg_salary
-FROM employee_data;
-```
-
-## Salary Rank Within Department
-
-```sql
-SELECT `Employee ID`,
-       `Full Name`,
-       Department,
-       salary_numeric,
-       RANK() OVER(
-           PARTITION BY Department
-           ORDER BY salary_numeric DESC
-       ) AS salary_rank_department
-FROM employee_data;
-```
-
-## Previous Salary Analysis
-
-```sql
-SELECT `Employee ID`,
-       `Full Name`,
-       salary_numeric,
-       LAG(salary_numeric)
-       OVER(ORDER BY salary_numeric) AS previous_salary
-FROM employee_data;
-```
-
-## Next Salary Analysis
-
-```sql
-SELECT `Employee ID`,
-       `Full Name`,
-       salary_numeric,
-       LEAD(salary_numeric)
-       OVER(ORDER BY salary_numeric) AS next_salary
-FROM employee_data;
-```
-
----
-
 # Learning Progress
 
 ## Concepts Mastered
