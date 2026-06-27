@@ -185,6 +185,7 @@ FROM employee_data_csv
 GROUP BY City;
 
 
+
 -- Q17. City with highest employee count
 SELECT City,
        COUNT(*) AS employee_count
