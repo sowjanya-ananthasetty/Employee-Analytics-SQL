@@ -1,3 +1,5 @@
+CREATE employee_db;
+
 SHOW TABLES;
 
 USE employee_db;
