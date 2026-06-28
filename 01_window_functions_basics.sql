@@ -123,7 +123,7 @@ SELECT `Employee ID`,
        MIN(salary_numeric) OVER(PARTITION BY Department) AS department_max_salary
 FROM employee_data;
 
-/*=========================================================
+/*==========================================================
 Question 4: Salary Rank Within Department
 
 Display:
@@ -138,7 +138,7 @@ Requirements:
 - Highest salary should receive rank 1.
 - Employees with the same salary should receive the same rank.
 - Ranking should contain gaps after ties.
-=========================================================*/
+==========================================================*/
 
 SELECT `Employee ID`,
        `Full Name`,
